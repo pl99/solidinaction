@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.advantum.solidinaction.services.RoutingService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +20,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RoutingController {
 
+    RoutingService service;
 
     @PostMapping("")
     public ResponseEntity<Map<String, String>> doRouting() {
-            Map<String, String> ok = new HashMap<>();
-            ok.put("result", "Ok");
-            return new ResponseEntity<>(ok, HttpStatus.OK);
+            return new ResponseEntity<>(service.doRoute(), HttpStatus.OK);
     }
 }

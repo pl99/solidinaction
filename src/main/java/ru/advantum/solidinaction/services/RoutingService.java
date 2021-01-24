@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 import ru.advantum.solidinaction.services.routing.AlphabetOfTaste;
+import ru.advantum.solidinaction.services.routing.RouteCalculator;
 import ru.advantum.solidinaction.services.routing.Y10group;
 
 import java.util.HashMap;
@@ -15,22 +16,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RoutingService {
 
-    AlphabetOfTaste alphabetOfTaste;
-    Y10group y10group;
+    Map<String, RouteCalculator> calculatorMap;
 
     public Map<String, String> doRoute(String retailer) {
-        Map<String, String> route;
-        switch (retailer) {
-            case "AV":
-                route = alphabetOfTaste.doRoute();
-                break;
-            case "Y10":
-                route = y10group.doRoute();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown retailer!");
-
+        RouteCalculator routeCalculator = calculatorMap.get(retailer);
+        if(null == routeCalculator) {
+            throw new IllegalArgumentException("Unknown retailer!");
         }
-        return route;
+        return routeCalculator.doRoute();
     }
 }

@@ -22,8 +22,15 @@ public class RoutingController {
 
     RoutingService service;
 
-    @PostMapping("")
-    public ResponseEntity<Map<String, String>> doRouting() {
-            return new ResponseEntity<>(service.doRoute(), HttpStatus.OK);
+    @PostMapping("{retailer}")
+    public ResponseEntity<Map<String, String>> doRouting(@PathVariable String retailer) {
+        try {
+            return new ResponseEntity<>(service.doRoute(retailer), HttpStatus.OK);
+
+        }catch (IllegalArgumentException e){
+            Map<String, String> error = new HashMap<>();
+            error.put("result", e.getMessage());
+            return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

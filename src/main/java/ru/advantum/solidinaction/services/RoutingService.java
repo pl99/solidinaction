@@ -21,10 +21,10 @@ public class RoutingService {
     public Map<String, String> doRoute(String retailer) {
         Map<String, String> route;
         switch (retailer) {
-            case "AV":
+            case "testyalphabet":
                 route = alphabetOfTaste.doRoute();
                 break;
-            case "Y10":
+            case "y10":
                 route = y10group.doRoute();
                 break;
             default:

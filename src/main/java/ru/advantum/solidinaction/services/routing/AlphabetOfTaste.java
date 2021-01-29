@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component("AV")
+@Component("testyalphabet")
 public class AlphabetOfTaste implements RouteCalculator{
     @Override
     public Map<String, String> doRoute(){

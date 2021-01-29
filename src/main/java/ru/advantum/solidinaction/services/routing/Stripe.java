@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class Dixie implements RouteCalculator {
+@Component("y10")
+public class Stripe implements RouteCalculator {
     @Override
     public Map<String, String> doRoute() {
         Map<String, String> res = new HashMap<>();
-        res.put("result", "маршрут для Дикси");
+        res.put("result", "маршрут для Полоски");
         return res;
     }
 }

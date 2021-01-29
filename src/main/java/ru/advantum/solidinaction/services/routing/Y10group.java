@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component("Y10")
+@Component("y10")
 public class Y10group implements RouteCalculator{
     @Override
     public Map<String, String> doRoute(){

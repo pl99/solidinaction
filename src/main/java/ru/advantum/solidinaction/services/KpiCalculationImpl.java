@@ -8,8 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.advantum.solidinaction.services.calculators.KpiCalculatorInterface;
 
-import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,9 +37,12 @@ public class KpiCalculationImpl implements KpiCalculation {
         if (null == calculatorInterfaces) {
             throw new IllegalArgumentException("Ни одного калькулятора для " + retailer + " не реализовано!");
         }
-        calculatorInterfaces.forEach(KpiCalculatorInterface::calculate);
         Map<String, BigDecimal> kpiMap = new HashMap<>();
-        kpiMap.put("", BigDecimal.ONE);
+        calculatorInterfaces.forEach(it -> {
+                    AbstractMap.SimpleEntry<String, BigDecimal> calculate = it.calculate();
+                    kpiMap.put(calculate.getKey(), calculate.getValue());
+                }
+        );
         return kpiMap;
     }
 }

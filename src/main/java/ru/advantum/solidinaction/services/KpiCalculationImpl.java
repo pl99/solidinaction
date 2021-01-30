@@ -28,7 +28,7 @@ public class KpiCalculationImpl implements KpiCalculation {
         List<KpiCalculatorInterface> kpiCalculatorInterfaces = calculators
                 .computeIfAbsent(retailer, kpiCalcs -> new ArrayList<>());
         kpiCalculatorInterfaces.add(calculator);
-        calculators.forEach((key, value) -> log.info("{} -> {}", key, value));
+        calculators.forEach((key, value) -> log.info("{} -> {}", key, value.size()));
     }
 
     @Override

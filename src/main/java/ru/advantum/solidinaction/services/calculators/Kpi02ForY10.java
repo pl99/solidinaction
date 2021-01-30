@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Kpi02ForY10 implements KpiCalculatorInterface{
     @Override
     public void calculate() {
-      log.info("рассчитываем Kpi01 для {}", getClass().getSimpleName());
+      log.info("рассчитываем Kpi02 для {}", getClass().getSimpleName());
     }
 
     @Override

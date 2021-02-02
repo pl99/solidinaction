@@ -1,22 +1,23 @@
 package ru.advantum.solidinaction.services;
 
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.advantum.solidinaction.services.routing.AlphabetOfTaste;
 import ru.advantum.solidinaction.services.routing.RouteCalculator;
-import ru.advantum.solidinaction.services.routing.Y10group;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
 public class RoutingService {
 
     Map<String, RouteCalculator> calculatorMap;
+
+    @Autowired
+    public RoutingService(Map<String, RouteCalculator> calculatorMap) {
+        this.calculatorMap = calculatorMap;
+    }
 
     public Map<String, String> doRoute(String retailer) {
         RouteCalculator routeCalculator = calculatorMap.get(retailer);

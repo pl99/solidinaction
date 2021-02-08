@@ -1,23 +1,24 @@
 package ru.advantum.solidinaction.services.kpi.calculation;
 
 import io.vavr.Tuple2;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
 public class KpiCalculationSpringService {
 
-    List<KpiCalculator> calculators;
+    private final List<KpiCalculator> calculators;
+
+    @Autowired
+    public KpiCalculationSpringService(List<KpiCalculator> calculators) {
+        this.calculators = Collections.unmodifiableList(calculators);
+    }
 
     public Map<String, BigDecimal> calculateKpi() {
         Map<String, BigDecimal> result = new TreeMap<>();

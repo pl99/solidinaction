@@ -26,6 +26,6 @@ public class KpiCalcControllerController {
 
     @PostMapping()
     public Map<String, BigDecimal> calculateKpi(){
-        return regularService.calculateKpi();
+        return springService.calculateKpi();
     }
 }

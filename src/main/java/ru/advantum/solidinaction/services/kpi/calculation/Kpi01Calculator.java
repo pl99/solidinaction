@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.Random;
 
-@Component
+@Component("Kpi01")
 public class Kpi01Calculator implements KpiCalculator {
     @Override
-    public Tuple2<String, BigDecimal> calculate() {
-        return new Tuple2<>("kpi01", BigDecimal.valueOf(new Random().nextDouble()));
+    public BigDecimal calculate() {
+        return BigDecimal.valueOf(new Random().nextDouble());
     }
 }

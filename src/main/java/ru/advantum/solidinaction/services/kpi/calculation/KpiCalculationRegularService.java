@@ -22,12 +22,12 @@ public class KpiCalculationRegularService {
     public Map<String, BigDecimal> calculateKpi(){
         Map<String, BigDecimal> result = new HashMap<>();
 
-        Tuple2<String, BigDecimal> kpi01 = kpi01Calculator.calculate();
-        result.put(kpi01._1(), kpi01._2());
-        Tuple2<String, BigDecimal> kpi02 = kpi02Calculator.calculate();
-        result.put(kpi02._1(), kpi02._2());
-        Tuple2<String, BigDecimal> kpi03 = kpi03Calculator.calculate();
-        result.put(kpi03._1(), kpi03._2());
+        BigDecimal kpi01 = kpi01Calculator.calculate();
+        result.put("kpi01", kpi01);
+        BigDecimal kpi02 = kpi02Calculator.calculate();
+        result.put("kpi02", kpi02);
+        BigDecimal kpi03 = kpi03Calculator.calculate();
+        result.put("kpi03", kpi03);
         return result;
     }
 }

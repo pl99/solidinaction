@@ -6,5 +6,5 @@ import java.math.BigDecimal;
 
 public interface KpiCalculator {
 
-    Tuple2<String, BigDecimal> calculate();
+    BigDecimal calculate();
 }

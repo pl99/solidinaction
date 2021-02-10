@@ -18,13 +18,11 @@ import java.util.TreeMap;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
 @Slf4j
-public class KpiCalculationImpl implements KpiCalculation {
+public class KpiCalculationService {
 
     Map<String, List<KpiCalculatorInterface>> calculators = new HashMap<>();
 
-    @Override
     public void register(String retailer, KpiCalculatorInterface calculator) {
         List<KpiCalculatorInterface> kpiCalculatorInterfaces = calculators
                 .computeIfAbsent(retailer, kpiCalcs -> new ArrayList<>());
@@ -32,7 +30,6 @@ public class KpiCalculationImpl implements KpiCalculation {
         calculators.forEach((key, value) -> log.info("{} -> {}", key, value));
     }
 
-    @Override
     public Map<String, BigDecimal> calculateKpi(String retailer) {
         List<KpiCalculatorInterface> calculatorInterfaces = calculators.get(retailer);
         if (null == calculatorInterfaces) {

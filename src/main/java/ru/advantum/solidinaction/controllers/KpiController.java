@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.advantum.solidinaction.services.KpiCalculationImpl;
+import ru.advantum.solidinaction.services.KpiCalculationService;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Map;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class KpiController {
-    KpiCalculationImpl service;
+    KpiCalculationService service;
 
     @PostMapping("{retailer}")
     public Map<String, BigDecimal> calculateKpi(@PathVariable String retailer){

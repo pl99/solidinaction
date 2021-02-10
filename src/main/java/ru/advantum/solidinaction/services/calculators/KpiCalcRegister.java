@@ -1,8 +1,7 @@
 package ru.advantum.solidinaction.services.calculators;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import ru.advantum.solidinaction.services.KpiCalculation;
+import ru.advantum.solidinaction.services.KpiCalculationService;
 
 public interface KpiCalcRegister {
-    void register(KpiCalculation service);
+    void register(KpiCalculationService service);
 }

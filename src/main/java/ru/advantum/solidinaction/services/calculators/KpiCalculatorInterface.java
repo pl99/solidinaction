@@ -9,10 +9,5 @@ import java.util.AbstractMap;
 
 public interface KpiCalculatorInterface {
     AbstractMap.SimpleEntry<String, BigDecimal> calculate();
-    String getRetailer();
-
-    @Autowired
-    default void register(KpiCalculation service){
-        service.register(getRetailer(), this);
-    }
+    String getName();
 }

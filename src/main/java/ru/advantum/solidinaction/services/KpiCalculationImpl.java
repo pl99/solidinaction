@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -37,7 +38,7 @@ public class KpiCalculationImpl implements KpiCalculation {
         if (null == calculatorInterfaces) {
             throw new IllegalArgumentException("Ни одного калькулятора для " + retailer + " не реализовано!");
         }
-        Map<String, BigDecimal> kpiMap = new HashMap<>();
+        Map<String, BigDecimal> kpiMap = new TreeMap<>();
         calculatorInterfaces.forEach(it -> {
                     AbstractMap.SimpleEntry<String, BigDecimal> calculate = it.calculate();
                     kpiMap.put(calculate.getKey(), calculate.getValue());

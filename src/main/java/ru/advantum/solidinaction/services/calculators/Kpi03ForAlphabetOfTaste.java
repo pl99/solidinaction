@@ -9,11 +9,16 @@ import java.util.AbstractMap;
 
 @Component
 @Slf4j
-public class Kpi03ForAlphabetOfTaste extends KpiForAlphabetOfTaste {
+public class Kpi03ForAlphabetOfTaste implements KpiCalculatorInterface, KpiForAlphabetOfTaste {
     @Override
     public AbstractMap.SimpleEntry<String, BigDecimal> calculate() {
         log.info("рассчитываем Kpi03 для {}", getClass().getSimpleName());
         return
                 new AbstractMap.SimpleEntry<>("Kpi03", BigDecimal.valueOf(Math.random()));
+    }
+
+    @Override
+    public String getName() {
+        return "Kpi03";
     }
 }
